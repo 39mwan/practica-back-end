@@ -1,7 +1,7 @@
-package com.example.demo.api;
+package com.autentia.practica.pot.api;
 
-import com.example.demo.model.Friend;
-import com.example.demo.service.FriendService;
+import com.autentia.practica.pot.model.Friend;
+import com.autentia.practica.pot.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

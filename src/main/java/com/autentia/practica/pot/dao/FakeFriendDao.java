@@ -1,6 +1,6 @@
-package com.example.demo.dao;
+package com.autentia.practica.pot.dao;
 
-import com.example.demo.model.Friend;
+import com.autentia.practica.pot.model.Friend;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

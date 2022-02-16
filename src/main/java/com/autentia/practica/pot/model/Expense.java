@@ -1,14 +1,17 @@
-package com.example.demo.model;
+package com.autentia.practica.pot.model;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Expense {
     private Friend friend;
-    private float amount;
+    private BigDecimal amount; //bigDecimal
     private String description;
-    private Date date;
+    private LocalDateTime date; //localDateTime
 
-    public Expense(Friend friend, float amount, String description, Date date) {
+
+    public Expense(Friend friend, BigDecimal amount, String description, LocalDateTime date) {
         this.friend = friend;
         this.amount = amount;
         this.description = description;
@@ -23,13 +26,7 @@ public class Expense {
         this.friend = friend;
     }
 
-    public float getAmount() {
-        return amount;
-    }
 
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
 
     public String getDescription() {
         return description;
@@ -39,11 +36,20 @@ public class Expense {
         this.description = description;
     }
 
-    public Date getDate() {
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
+
 }

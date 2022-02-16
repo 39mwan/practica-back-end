@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.autentia.practica.pot.model;
 
 import java.util.UUID;
 
@@ -6,13 +6,11 @@ public class Friend {
     private UUID id;
     private String name;
     private String surname;
-    private int balance;
 
     public Friend(UUID id, String name, String surname) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.balance = 0;
     }
 
     public String getName() {
@@ -29,14 +27,6 @@ public class Friend {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
     }
 
     public UUID getId() {

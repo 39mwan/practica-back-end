@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.autentia.practica.pot.service;
 
-import com.example.demo.model.Expense;
+import com.autentia.practica.pot.model.Expense;
 
 import java.util.ArrayList;
 import java.util.List;

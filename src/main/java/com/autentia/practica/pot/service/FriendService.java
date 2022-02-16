@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.autentia.practica.pot.service;
 
-import com.example.demo.dao.FriendDao;
-import com.example.demo.model.Friend;
+import com.autentia.practica.pot.dao.FriendDao;
+import com.autentia.practica.pot.model.Friend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
