@@ -1,5 +1,7 @@
 package com.autentia.practica.pot.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 public class Friend {
@@ -7,8 +9,8 @@ public class Friend {
     private String name;
     private String surname;
 
-    public Friend(UUID id, String name, String surname) {
-        this.id = id;
+    public Friend( @JsonProperty("name") String name, @JsonProperty("surname") String surname) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.surname = surname;
     }
