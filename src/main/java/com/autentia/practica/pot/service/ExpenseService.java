@@ -12,12 +12,12 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class BalanceService {
+public class ExpenseService {
     private final ExpenseDao expenseDao;
 
 
     @Autowired
-    public BalanceService(@Qualifier("fakeExpensesDao") ExpenseDao expenseDao) {
+    public ExpenseService(@Qualifier("fakeExpensesDao") ExpenseDao expenseDao) {
         this.expenseDao = expenseDao;
     }
 
@@ -50,4 +50,13 @@ public class BalanceService {
 
         return balance;
     }
+
+    public void insertExpense ( Expense expense){
+        expenseDao.insertExpense(expense);
+    }
+
+    public List<Expense> getExpenses(){
+        return expenseDao.getAllExpenses();
+    }
+
 }
