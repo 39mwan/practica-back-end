@@ -1,24 +1,33 @@
 package com.autentia.practica.pot.service;
 
+import com.autentia.practica.pot.dao.ExpenseDao;
 import com.autentia.practica.pot.model.Expense;
 import com.autentia.practica.pot.model.Friend;
-import com.fasterxml.jackson.databind.ser.impl.PropertyBasedObjectIdGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
+@Service
 public class BalanceService {
+    private final ExpenseDao expenseDao;
 
-    public HashMap<Friend, BigDecimal> calculate(List<Expense> expenses) {
+
+    @Autowired
+    public BalanceService(@Qualifier("fakeExpensesDao") ExpenseDao expenseDao) {
+        this.expenseDao = expenseDao;
+    }
+
+    public HashMap<Friend, BigDecimal> calculate() {
         HashMap<Friend, BigDecimal> balance = new HashMap<>();
         BigDecimal friendAmount;
         BigDecimal totalExpenses = new BigDecimal(0);
-        int totalFriends = 0;
+        int totalFriends;
         
-        for (Expense expense : expenses) {
+        for (Expense expense : this.expenseDao.getAllExpenses()) {
             Friend friend = expense.getFriend();
             if (!balance.containsKey(friend))
                 balance.put(friend, expense.getAmount());
