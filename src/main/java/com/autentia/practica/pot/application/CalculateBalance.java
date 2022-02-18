@@ -10,12 +10,20 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 
+//CalculateBalance Use case
+//Functional Core, Imperative shell
+//encapsulates business logic in core and a shell (this class) orchestrates DAO and Core
 public class CalculateBalance {
 
-    private static final ExpenseDao expenseDao = new FakeExpensesDao();
-    private static final ExpenseService expenseService = new ExpenseService();
+    private final ExpenseDao expenseDao;
+    private final ExpenseService expenseService;
 
-    public static HashMap<Friend, BigDecimal> calculateBalance() {
+    public CalculateBalance (ExpenseDao expenseDao, ExpenseService expenseService){
+        this.expenseDao = expenseDao;
+        this.expenseService = expenseService;
+    }
+
+    public HashMap<Friend, BigDecimal> calculateBalance() {
         List<Expense> expenseList = expenseDao.getAllExpenses();
         return expenseService.calculate(expenseList);
     }

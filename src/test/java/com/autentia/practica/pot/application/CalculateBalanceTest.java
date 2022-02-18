@@ -20,12 +20,11 @@ import static org.mockito.Mockito.when;
 
 class CalculateBalanceTest {
     private ExpenseDao expenseDaoMock;
-    private ExpenseService balanceService;
     HashMap<Friend, BigDecimal> balance;
     @BeforeEach
     public void setUp() {
         expenseDaoMock = mock(ExpenseDao.class);
-        balanceService = new ExpenseService();
+        ExpenseService balanceService = new ExpenseService();
         balance = new HashMap<>();
     }
 
@@ -41,12 +40,13 @@ class CalculateBalanceTest {
 
         when(expenseDaoMock.getAllExpenses()).thenReturn(expenses);
 
-        CalculateBalance calculateBalance = new CalculateBalance();
+        CalculateBalance calculateBalance = new CalculateBalance(expenseDaoMock, new ExpenseService());
+
 
         HashMap<Friend, BigDecimal> calculatedBalanceExpected = new HashMap<>();
         calculatedBalanceExpected.put(luis,BigDecimal.valueOf(5));
         calculatedBalanceExpected.put(sonia,BigDecimal.valueOf(-5));
 
-        assertEquals(calculatedBalanceExpected,CalculateBalance.calculateBalance());
+        assertEquals(calculatedBalanceExpected, calculateBalance.calculateBalance());
     }
 }
