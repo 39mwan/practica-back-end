@@ -11,12 +11,12 @@
 
   ## [Model](./src/main/java/com/autentia/practica/pot/model/)
   Contains business entities
-
+  
+  ## [Application](./src/main/java/com/autentia/practica/pot/application/)
+  Contains use cases. The imperative shell  
+  
   ## [Service](./src/main/java/com/autentia/practica/pot/service/)
   Contains business logic. The functional core.
 
-  ## [Application](./src/main/java/com/autentia/practica/pot/application/)
-  Contains use cases. The imperative shell
-  
   
   
