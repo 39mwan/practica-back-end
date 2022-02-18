@@ -20,13 +20,15 @@ public class ExpenseController {
 
     @PostMapping
     public void insertExpense (@RequestBody Expense expense){
-        expenseService.insertExpense(expense);
+        //expenseService.insertExpense(expense);
     }
 
+/*
     @GetMapping
     public List<Expense> getAllExpenses(){
         return expenseService.getExpenses();
     }
+*/
 
   /*  @GetMapping
     public HashMap<Friend, BigDecimal> getBalance(){
