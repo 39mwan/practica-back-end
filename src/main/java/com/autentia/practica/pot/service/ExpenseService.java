@@ -13,21 +13,15 @@ import java.util.List;
 
 @Service
 public class ExpenseService {
-    private final ExpenseDao expenseDao;
 
+    public HashMap<Friend, BigDecimal> calculate(List<Expense> expenses) {
 
-    @Autowired
-    public ExpenseService(@Qualifier("fakeExpensesDao") ExpenseDao expenseDao) {
-        this.expenseDao = expenseDao;
-    }
-
-    public HashMap<Friend, BigDecimal> calculate() {
         HashMap<Friend, BigDecimal> balance = new HashMap<>();
         BigDecimal friendAmount;
         BigDecimal totalExpenses = new BigDecimal(0);
         int totalFriends;
         
-        for (Expense expense : this.expenseDao.getAllExpenses()) {
+        for (Expense expense : expenses) {
             Friend friend = expense.getFriend();
             if (!balance.containsKey(friend))
                 balance.put(friend, expense.getAmount());
@@ -49,14 +43,6 @@ public class ExpenseService {
         }
 
         return balance;
-    }
-
-    public void insertExpense ( Expense expense){
-        expenseDao.insertExpense(expense);
-    }
-
-    public List<Expense> getExpenses(){
-        return expenseDao.getAllExpenses();
     }
 
 }
