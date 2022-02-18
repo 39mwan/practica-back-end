@@ -20,8 +20,6 @@ import static org.mockito.Mockito.when;
 
 class ExpenseServiceTest {
 
-    private ExpenseDao expenseDaoMock;
-    private ExpenseService expenseService;
     HashMap<Friend, BigDecimal> balance;
 
     @BeforeEach
