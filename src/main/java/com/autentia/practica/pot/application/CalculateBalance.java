@@ -5,6 +5,8 @@ import com.autentia.practica.pot.dao.FakeExpensesDao;
 import com.autentia.practica.pot.model.Expense;
 import com.autentia.practica.pot.model.Friend;
 import com.autentia.practica.pot.service.ExpenseService;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
