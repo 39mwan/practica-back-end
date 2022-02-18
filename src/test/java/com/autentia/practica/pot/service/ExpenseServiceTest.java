@@ -26,10 +26,7 @@ class ExpenseServiceTest {
 
     @BeforeEach
     public void setUp() {
-        expenseDaoMock = mock(ExpenseDao.class);
-        expenseService = new ExpenseService(expenseDaoMock);
         balance = new HashMap<>();
-
     }
 
     @Test
@@ -42,14 +39,13 @@ class ExpenseServiceTest {
         expenses.add(new Expense(luis, BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
         expenses.add(new Expense(sonia, BigDecimal.valueOf(10), "comida", LocalDateTime.now()));
 
-        when(expenseDaoMock.getAllExpenses()).thenReturn(expenses);
 
         balance.put(luis, BigDecimal.valueOf(5)); // a luis le deben 5
         balance.put(sonia, BigDecimal.valueOf(-5)); // sonia debe 5
 
-        HashMap<Friend, BigDecimal> calculatedBalance = expenseService.calculate();
+        HashMap<Friend, BigDecimal> calculatedBalance = new ExpenseService().calculate(expenses);
         System.out.println(calculatedBalance.values());
-        assertEquals(balance, calculatedBalance);
+        assertTrue(balance.equals(calculatedBalance));
     }
 
 }
