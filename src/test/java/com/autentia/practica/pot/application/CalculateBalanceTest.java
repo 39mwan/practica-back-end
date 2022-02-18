@@ -31,13 +31,15 @@ class CalculateBalanceTest {
 
     @Test
     public void shouldReturnBalance(){
+        //Creation of "expenses" = a MOCK DB of ExpenseDao
         List<Expense> expenses = new ArrayList<>();
         Friend luis = new Friend( "luis", "merino");
         Friend sonia = new Friend( "sonia", "zhang");
 
         expenses.add(new Expense(luis, BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
         expenses.add(new Expense(sonia, BigDecimal.valueOf(10), "comida", LocalDateTime.now()));
-
+        
+        //simulation of ExpenseDao functionality: expenseDaoMock returns MOCK DB of ExpenseDao
         when(expenseDaoMock.getAllExpenses()).thenReturn(expenses);
 
         CalculateBalance calculateBalance = new CalculateBalance(expenseDaoMock, new ExpenseService());
