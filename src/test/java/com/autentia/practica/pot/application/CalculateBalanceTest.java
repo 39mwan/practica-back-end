@@ -20,12 +20,11 @@ import static org.mockito.Mockito.when;
 
 class CalculateBalanceTest {
     private ExpenseDao expenseDaoMock;
-    HashMap<Friend, BigDecimal> balance;
+
     @BeforeEach
     public void setUp() {
         expenseDaoMock = mock(ExpenseDao.class);
         ExpenseService balanceService = new ExpenseService();
-        balance = new HashMap<>();
     }
 
 
