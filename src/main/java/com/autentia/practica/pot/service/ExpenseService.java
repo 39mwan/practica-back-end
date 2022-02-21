@@ -14,13 +14,21 @@ import java.util.List;
 @Service
 public class ExpenseService {
 
+    public HashMap<Friend, BigDecimal> calculateIfEmptyExpenses(List<Friend> friends) {
+        HashMap<Friend, BigDecimal> balance = new HashMap<>();
+        for (Friend friend : friends) {
+            balance.put(friend, BigDecimal.valueOf(0));
+        }
+        return balance;
+    }
+
     public HashMap<Friend, BigDecimal> calculate(List<Expense> expenses) {
 
         HashMap<Friend, BigDecimal> balance = new HashMap<>();
         BigDecimal friendAmount;
         BigDecimal totalExpenses = new BigDecimal(0);
         int totalFriends;
-        
+
         for (Expense expense : expenses) {
             Friend friend = expense.getFriend();
             if (!balance.containsKey(friend))
@@ -34,11 +42,11 @@ public class ExpenseService {
         }
         totalFriends = balance.size();
 
-        for (Friend clave : balance.keySet()) {
-            BigDecimal pagosTotales = balance.get(clave);
-            BigDecimal totalBalance = pagosTotales.subtract(totalExpenses.divide(BigDecimal.valueOf(totalFriends))); // balanceTotal = pagosTotales - (gastosTotales / totalFriends)
+            for (Friend clave : balance.keySet()) {
+                BigDecimal pagosTotales = balance.get(clave);
+                BigDecimal totalBalance = pagosTotales.subtract(totalExpenses.divide(BigDecimal.valueOf(totalFriends))); // balanceTotal = pagosTotales - (gastosTotales / totalFriends)
 
-            balance.put(clave, totalBalance);
+                balance.put(clave, totalBalance);
 
         }
 
