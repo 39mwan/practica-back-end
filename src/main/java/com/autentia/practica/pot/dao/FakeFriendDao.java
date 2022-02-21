@@ -8,10 +8,14 @@ import java.util.List;
 
 @Repository("fakeFriendRepo")
 public class FakeFriendDao implements FriendDao {
-private static List<Friend> DB = new ArrayList<>();
+    private final List<Friend> DB = new ArrayList<>();
 
     @Override
     public void insertFriend(Friend friend) {
         DB.add(friend);
+    }
+
+    public List<Friend> getFriends() {
+        return DB;
     }
 }
