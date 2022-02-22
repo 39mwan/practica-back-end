@@ -11,13 +11,8 @@ public class FakeFriendDao implements FriendDao {
     private final List<Friend> DB = new ArrayList<>();
 
     @Override
-    public boolean insertFriend(Friend friend) {
-        boolean success = true;
-        if (!DB.contains(friend))
-            DB.add(friend);
-        else
-            success = false;
-        return success;
+    public void insertFriend(Friend friend) {
+        DB.add(friend);
     }
 
     @Override
