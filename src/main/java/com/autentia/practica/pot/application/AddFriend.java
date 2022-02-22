@@ -11,8 +11,8 @@ public class AddFriend {
         this.friendDao = friendDao;
     }
 
-    public boolean addFriendUseCase(Friend friend){
-        return friendDao.insertFriend(friend);
+    public void addFriendUseCase(Friend friend){
+        friendDao.insertFriend(friend);
     }
 
 }
