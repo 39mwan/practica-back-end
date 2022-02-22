@@ -3,16 +3,13 @@ package com.autentia.practica.pot.application;
 import com.autentia.practica.pot.dao.FakeFriendDao;
 import com.autentia.practica.pot.dao.FriendDao;
 import com.autentia.practica.pot.model.Friend;
-import com.autentia.practica.pot.service.FriendService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
-class AddFriendTest {
+class AddFriendUseCaseTest {
 
     private FriendDao friendDaoMock;
 
@@ -24,9 +21,9 @@ class AddFriendTest {
     @Test
     public void shouldAddAValidFriend(){
         Friend newFriend = new Friend("Luis", "Merino");
-        AddFriend addFriend = new AddFriend(friendDaoMock);
+        AddFriendUseCase addFriendUseCase = new AddFriendUseCase(friendDaoMock);
 
-        addFriend.addFriendUseCase(newFriend);
+        addFriendUseCase.addFriendUseCase(newFriend);
         verify(friendDaoMock).insertFriend(newFriend);
 
     }
