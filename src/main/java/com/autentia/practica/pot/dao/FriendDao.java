@@ -5,6 +5,6 @@ import com.autentia.practica.pot.model.Friend;
 import java.util.List;
 
 public interface FriendDao {
-    boolean insertFriend (Friend friend);
+    void insertFriend (Friend friend);
     List<Friend> getFriends();
 }
