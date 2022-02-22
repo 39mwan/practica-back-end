@@ -24,11 +24,10 @@ class AddFriendTest {
     @Test
     public void shouldAddAValidFriend(){
         Friend newFriend = new Friend("Luis", "Merino");
-
-        when(friendDaoMock.insertFriend(newFriend)).thenReturn(true);
-
         AddFriend addFriend = new AddFriend(friendDaoMock);
-        assertTrue(addFriend.addFriendUseCase(newFriend));
+
+        addFriend.addFriendUseCase(newFriend);
+        verify(friendDaoMock).insertFriend(newFriend);
 
     }
 
