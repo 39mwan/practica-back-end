@@ -1,13 +1,8 @@
 package com.autentia.practica.pot.api;
 
 import com.autentia.practica.pot.model.Expense;
-import com.autentia.practica.pot.model.Friend;
 import com.autentia.practica.pot.service.ExpenseService;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.List;
 
 @RequestMapping("api/v1/expenses")
 @RestController
@@ -19,8 +14,8 @@ public class ExpenseController {
     }
 
     @PostMapping
-    public void insertExpense (@RequestBody Expense expense){
-        //expenseService.insertExpense(expense);
+    public void addExpense(@RequestBody Expense expense){
+        //expenseService.addExpense(expense);
     }
 
 /*
