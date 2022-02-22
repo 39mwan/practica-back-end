@@ -14,7 +14,7 @@ public class FakeExpensesDao implements ExpenseDao {
     private final List<Expense> expensesDB = new ArrayList<>();
 
     @Override
-    public void insertExpense(Expense expense) {
+    public void addExpense(Expense expense) {
         expensesDB.add(expense);
     }
     @Override
