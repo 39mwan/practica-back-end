@@ -14,33 +14,26 @@ import java.util.List;
 @Service
 public class ExpenseService {
 
-    public HashMap<Friend, BigDecimal> calculateIfEmptyExpenses(List<Friend> friends) {
-        HashMap<Friend, BigDecimal> balance = new HashMap<>();
-        for (Friend friend : friends) {
-            balance.put(friend, BigDecimal.valueOf(0));
-        }
-        return balance;
-    }
 
-    public HashMap<Friend, BigDecimal> calculate(List<Expense> expenses) {
+    public HashMap<Friend, BigDecimal> calculate(List<Expense> expenses, List<Friend> friendList) {
 
         HashMap<Friend, BigDecimal> balance = new HashMap<>();
         BigDecimal friendAmount;
         BigDecimal totalExpenses = new BigDecimal(0);
-        int totalFriends;
+        int totalFriends = friendList.size();
 
-        for (Expense expense : expenses) {
-            Friend friend = expense.getFriend();
-            if (!balance.containsKey(friend))
-                balance.put(friend, expense.getAmount());
-            else {
-                friendAmount = balance.get(friend);
-                friendAmount = friendAmount.add(expense.getAmount());
-                balance.put(friend, friendAmount);
+        if(!expenses.isEmpty()) {
+            for (Expense expense : expenses) {
+                Friend friend = expense.getFriend();
+                if (!balance.containsKey(friend))
+                    balance.put(friend, expense.getAmount());
+                else {
+                    friendAmount = balance.get(friend);
+                    friendAmount = friendAmount.add(expense.getAmount());
+                    balance.put(friend, friendAmount);
+                }
+                totalExpenses = totalExpenses.add(expense.getAmount());
             }
-            totalExpenses = totalExpenses.add(expense.getAmount());
-        }
-        totalFriends = balance.size();
 
             for (Friend clave : balance.keySet()) {
                 BigDecimal pagosTotales = balance.get(clave);
@@ -48,6 +41,11 @@ public class ExpenseService {
 
                 balance.put(clave, totalBalance);
 
+            }
+        } else {
+            for (Friend friend : friendList) {
+                balance.put(friend, BigDecimal.valueOf(0));
+            }
         }
 
         return balance;
