@@ -1,7 +1,5 @@
 package com.autentia.practica.pot.service;
 
-import com.autentia.practica.pot.application.CalculateBalance;
-import com.autentia.practica.pot.dao.ExpenseDao;
 import com.autentia.practica.pot.model.Expense;
 import com.autentia.practica.pot.model.Friend;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,11 +10,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 
 class ExpenseServiceTest {
