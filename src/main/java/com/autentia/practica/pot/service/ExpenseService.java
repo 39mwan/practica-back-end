@@ -22,18 +22,22 @@ public class ExpenseService {
         BigDecimal totalExpenses = new BigDecimal(0);
         int totalFriends = friendList.size();
 
-        if(!expenses.isEmpty()) {
+        if (!expenses.isEmpty()) {
             for (Expense expense : expenses) {
-                Friend friend = expense.getFriend();
-                if (!balance.containsKey(friend))
-                    balance.put(friend, expense.getAmount());
-                else {
-                    friendAmount = balance.get(friend);
-                    friendAmount = friendAmount.add(expense.getAmount());
-                    balance.put(friend, friendAmount);
+                for (Friend friend : friendList) {
+                    if (expense.getFriend().equals(friend)) {
+                        if (!balance.containsKey(friend))
+                            balance.put(friend, expense.getAmount());
+                        else {
+                            friendAmount = balance.get(friend);
+                            friendAmount = friendAmount.add(expense.getAmount());
+                            balance.put(friend, friendAmount);
+                        }
+                    }
                 }
                 totalExpenses = totalExpenses.add(expense.getAmount());
             }
+
 
             for (Friend clave : balance.keySet()) {
                 BigDecimal pagosTotales = balance.get(clave);
