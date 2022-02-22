@@ -19,7 +19,7 @@ public class CalculateBalance {
     private final FriendDao friendDao;
     private final ExpenseService expenseService;
 
-    public CalculateBalance (ExpenseDao expenseDao, FriendDao friendDao, ExpenseService expenseService){
+    public CalculateBalance(ExpenseDao expenseDao, FriendDao friendDao, ExpenseService expenseService) {
         this.expenseDao = expenseDao;
         this.expenseService = expenseService;
         this.friendDao = friendDao;
@@ -27,9 +27,8 @@ public class CalculateBalance {
 
     public HashMap<Friend, BigDecimal> calculateBalance() {
         List<Expense> expenseList = expenseDao.getAllExpenses();
-        if(!expenseList.isEmpty())
-            return expenseService.calculate(expenseList);
-        else
-            return expenseService.calculateIfEmptyExpenses(friendDao.getFriends());
+        List<Friend> friendsList = friendDao.getFriends();
+        return expenseService.calculate(expenseList, friendsList);
+
     }
 }
