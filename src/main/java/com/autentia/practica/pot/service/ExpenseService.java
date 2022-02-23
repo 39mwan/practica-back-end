@@ -25,26 +25,28 @@ public class ExpenseService {
         if (!expenses.isEmpty()) {
             for (Expense expense : expenses) {
                 for (Friend friend : friendList) {
-                    if (expense.getFriend().equals(friend)) {
-                        if (!balance.containsKey(friend))
+                    if (expense.getFriend().equals(friend)) { // no reconoce los dos amigos como iguales, se crean amigos con id distintos
+                        // referenciar al segundo POST el amigo que se ha creado en el primer POST
+                        // prinmero POST de creacion de amigo localhost:8080/api/v1/friend
+                        // segundo POST de creacion de gasto con el amigo creado en el primer POST
+                       if (!balance.containsKey(friend))
                             balance.put(friend, expense.getAmount());
                         else {
-                            friendAmount = balance.get(friend);
+                            friendAmount = balance.get(friend); //get value from friend
                             friendAmount = friendAmount.add(expense.getAmount());
                             balance.put(friend, friendAmount);
                         }
                     }
                 }
                 totalExpenses = totalExpenses.add(expense.getAmount());
+                System.out.println("total amount: " + totalExpenses);
             }
 
-
-            for (Friend clave : balance.keySet()) {
-                BigDecimal pagosTotales = balance.get(clave);
+            for (Friend friendKey : balance.keySet()) {
+                BigDecimal pagosTotales = balance.get(friendKey);
                 BigDecimal totalBalance = pagosTotales.subtract(totalExpenses.divide(BigDecimal.valueOf(totalFriends))); // balanceTotal = pagosTotales - (gastosTotales / totalFriends)
-
-                balance.put(clave, totalBalance);
-
+                balance.put(friendKey, totalBalance);
+                System.out.println(balance);
             }
         } else {
             for (Friend friend : friendList) {
