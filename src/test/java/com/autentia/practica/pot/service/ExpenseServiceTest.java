@@ -12,12 +12,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-
 
 class ExpenseServiceTest {
 
-    HashMap<Friend, BigDecimal> balance;
+    private final HashMap<Friend, BigDecimal> balance = new HashMap<>();
     List<Expense> expenseList;
     List<Friend> friendsList;
     Friend luis;
@@ -25,7 +23,6 @@ class ExpenseServiceTest {
 
     @BeforeEach
     public void setUp() {
-        balance = new HashMap<>();
         expenseList = new ArrayList<>();
         friendsList = new ArrayList<>();
         luis = new Friend( "luis", "merino");
@@ -73,4 +70,20 @@ class ExpenseServiceTest {
 
         assertEquals(calculatedBalanceExpected, calculatedBalance);
     }
+
+    @Test
+    public void shouldNotAddDuplicatedFriends(){
+
+        expenseList.add(new Expense(luis, BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
+        expenseList.add(new Expense(sonia, BigDecimal.valueOf(10), "comida", LocalDateTime.now()));
+
+        HashMap<Friend, BigDecimal> calculatedBalanceExpected = new HashMap<>();
+        calculatedBalanceExpected.put(luis, BigDecimal.valueOf(0));
+        calculatedBalanceExpected.put(sonia, BigDecimal.valueOf(0));
+        HashMap<Friend, BigDecimal> calculatedBalance = new ExpenseService().calculate(expenseList, friendsList);
+
+        assertEquals(calculatedBalanceExpected, calculatedBalance);
+
+    }
+
 }
