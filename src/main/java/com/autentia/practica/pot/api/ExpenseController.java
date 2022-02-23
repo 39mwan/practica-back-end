@@ -33,13 +33,12 @@ public class ExpenseController {
         addExpenseUseCase.addExpense(expense);
     }
 
-    @RequestMapping("/getExpenses")
     @GetMapping
     public List<Expense> getAllExpenses() {
         return getAllExpensesUseCase.getAllExpensesUseCase();
     }
 
-    @RequestMapping("/geteBalance")
+    @RequestMapping("/balance")
     @GetMapping
     public HashMap<Friend, BigDecimal> getBalance(){
         return calculateBalanceUseCase.calculateBalance();
