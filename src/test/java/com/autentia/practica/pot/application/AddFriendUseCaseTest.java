@@ -1,7 +1,7 @@
 package com.autentia.practica.pot.application;
 
-import com.autentia.practica.pot.dao.FakeFriendDao;
 import com.autentia.practica.pot.dao.FriendDao;
+import com.autentia.practica.pot.dao.SQLFriendDao;
 import com.autentia.practica.pot.model.Friend;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ class AddFriendUseCaseTest {
 
     @BeforeEach
     public void setUp(){
-        friendDaoMock = mock(FakeFriendDao.class);
+        friendDaoMock = mock(SQLFriendDao.class);
     }
 
     @Test
