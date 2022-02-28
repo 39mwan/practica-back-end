@@ -22,9 +22,9 @@ public class CalculateBalanceUseCase {
     private final FriendDao friendDao;
     private final ExpenseService expenseService;
 
-    public CalculateBalanceUseCase(@Qualifier("fakeExpensesDao") ExpenseDao expenseDao,
-                                   @Qualifier("fakeFriendsDao") FriendDao friendDao,
-                                   ExpenseService expenseService){
+    public CalculateBalanceUseCase(ExpenseDao expenseDao,
+                                   FriendDao friendDao,
+                                   ExpenseService expenseService) {
         this.expenseDao = expenseDao;
         this.expenseService = expenseService;
         this.friendDao = friendDao;
