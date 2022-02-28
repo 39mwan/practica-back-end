@@ -1,3 +1,4 @@
+/*
 package com.autentia.practica.pot.service;
 
 import com.autentia.practica.pot.dao.FriendDao;
@@ -12,7 +13,7 @@ public class FriendService {
 
     //dependency injection
     @Autowired
-    public FriendService(@Qualifier("fakeFriendRepo") FriendDao friendDao) {
+    public FriendService( FriendDao friendDao) {
         this.friendDao = friendDao;
     }
 
@@ -20,3 +21,4 @@ public class FriendService {
         friendDao.insertFriend(friend);
     }
 }
+*/
