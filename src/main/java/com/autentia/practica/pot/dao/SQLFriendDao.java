@@ -6,10 +6,12 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public class SQLFriendDao implements FriendDao{
-    JdbcTemplate jdbcTemplate = new JdbcTemplate()
+
+    JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
     @Override
     public void insertFriend(Friend friend){
@@ -18,6 +20,12 @@ public class SQLFriendDao implements FriendDao{
 
     @Override
     public List<Friend> getFriends() {
-        return null;
+        final String sql = "select * from friends";
+        return jdbcTemplate.query(sql,(resultset,i)-> {
+            UUID id = UUID.fromString(resultset.getString("id"));
+            String name = resultset.getString("name");
+            String surname = resultset.getString("surname");
+            return new Friend(name,surname);
+        });
     }
 }
