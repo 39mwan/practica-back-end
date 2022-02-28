@@ -71,7 +71,7 @@ class ExpenseServiceTest {
         assertEquals(calculatedBalanceExpected, calculatedBalance);
     }
 
-    @Test
+ /*   @Test
     public void shouldNotAddDuplicatedFriends(){
 
         expenseList.add(new Expense(luis, BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
@@ -84,6 +84,6 @@ class ExpenseServiceTest {
 
         assertEquals(calculatedBalanceExpected, calculatedBalance);
 
-    }
+    }*/
 
 }
