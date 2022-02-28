@@ -1,47 +1,30 @@
 package com.autentia.practica.pot.api;
 
-import com.autentia.practica.pot.DemoApplication;
 import com.autentia.practica.pot.application.AddExpenseUseCase;
 import com.autentia.practica.pot.application.CalculateBalanceUseCase;
 import com.autentia.practica.pot.application.GetAllExpensesUseCase;
 import com.autentia.practica.pot.model.Expense;
 import com.autentia.practica.pot.model.Friend;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.JSONObject;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.cassandra.CassandraProperties;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import javax.annotation.security.RunAs;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.jayway.jsonpath.internal.function.ParamType.JSON;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.BDDAssumptions.given;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -67,10 +50,6 @@ class ExpenseControllerTest {
 
     private Expense expense;
     private List<Expense> expenselist;
-    private HashMap<Friend,BigDecimal> balance;
-
-    private Friend luis;
-    private Friend sonia;
 
     @BeforeEach
     public void setUp(){
@@ -102,9 +81,9 @@ class ExpenseControllerTest {
 
     @Test
     public void shouldGetBalance() throws Exception {
-        balance = new HashMap<>();
-        luis = new Friend("luis", "merino");
-        sonia = new Friend("sonia", "zhang");
+        HashMap<Friend, BigDecimal> balance = new HashMap<>();
+        Friend luis = new Friend("luis", "merino");
+        Friend sonia = new Friend("sonia", "zhang");
         balance.put(luis, BigDecimal.valueOf(5)); // a luis le deben 5
         balance.put(sonia, BigDecimal.valueOf(-5)); // sonia debe 5
 
