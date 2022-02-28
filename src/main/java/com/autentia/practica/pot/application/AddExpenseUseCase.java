@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class AddExpenseUseCase {
     private final ExpenseDao expenseDao;
 
-    public AddExpenseUseCase(@Qualifier("fakeExpensesDao") ExpenseDao expenseDao){
+    public AddExpenseUseCase( ExpenseDao expenseDao){
         this.expenseDao = expenseDao;
     }
 
