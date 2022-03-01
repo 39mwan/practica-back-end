@@ -10,7 +10,11 @@ public class Friend {
     private String name;
     private String surname;
 
-    public Friend( @JsonProperty("name") String name, @JsonProperty("surname") String surname) {
+    public Friend() {
+
+    }
+
+    public Friend(@JsonProperty("name") String name, @JsonProperty("surname") String surname) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.surname = surname;

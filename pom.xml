@@ -76,6 +76,21 @@
                         <image>
                             <alias>database</alias>
                             <name>mysql:8</name>
+                            <build>
+                                <from>mysql:8</from>
+                                <assembly>
+                                    <mode>dir</mode>
+                                    <!-- database startup script -->
+                                    <targetDir>/docker-entrypoint-initdb.d</targetDir>
+                                    <inline>
+                                        <files>
+                                            <file>
+                                                <source>src/test/resources/init-db-test.sql</source>
+                                            </file>
+                                        </files>
+                                    </inline>
+                                </assembly>
+                            </build>
                             <run>
                                 <wait>
                                     <log>mysqld: ready for connections</log>
@@ -99,16 +114,17 @@
                         <id>docker:start</id>
                         <phase>pre-integration-test</phase>
                         <goals>
+                            <goal>build</goal>
                             <goal>start</goal>
                         </goals>
                     </execution>
-                    <execution>
+                  <!--  <execution>
                         <id>docker:stop</id>
                         <phase>post-integration-test</phase>
                         <goals>
                             <goal>stop</goal>
                         </goals>
-                    </execution>
+                    </execution>-->
                 </executions>
             </plugin>
 
