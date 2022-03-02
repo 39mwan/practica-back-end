@@ -92,6 +92,10 @@
                                 </assembly>
                             </build>
                             <run>
+                                <wait>
+                                    <log>mysqld: ready for connections</log>
+                                    <time>20000</time>
+                                </wait>
                                 <env>
                                     <MYSQL_ROOT_PASSWORD>abc123</MYSQL_ROOT_PASSWORD>
                                     <MYSQL_DATABASE>potdb</MYSQL_DATABASE>
@@ -114,16 +118,15 @@
                             <goal>start</goal>
                         </goals>
                     </execution>
-                    <execution>
+                    <!--  <execution>
                           <id>docker:stop</id>
                           <phase>post-integration-test</phase>
                           <goals>
                               <goal>stop</goal>
                           </goals>
-                      </execution>
+                      </execution>-->
                 </executions>
             </plugin>
-
 
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
