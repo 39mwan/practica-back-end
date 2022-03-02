@@ -118,17 +118,18 @@
                             <goal>start</goal>
                         </goals>
                     </execution>
-                    <!--  <execution>
-                          <id>docker:stop</id>
-                          <phase>post-integration-test</phase>
-                          <goals>
-                              <goal>stop</goal>
-                          </goals>
-                      </execution>-->
+                    <execution>
+                        <id>stop</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <executions>
