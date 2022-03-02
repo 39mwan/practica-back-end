@@ -11,8 +11,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest   //Inicia el contexto para inyectar las dependencias
-
-
 class SQLFriendDaoIT {   //Nomenclatura -IT para tests de integracion
 
     @Autowired
@@ -25,10 +23,13 @@ class SQLFriendDaoIT {   //Nomenclatura -IT para tests de integracion
 
     @Test
     void insertFriend() {
-       //assertDoesNotThrow(Exception.class, friendDao.insertFriend(luis)); //hacer que devuelva excepcion si no se inserta
+       Friend sonia = new Friend("Sonia", "Zhang");
+       friendDao.insertFriend(sonia);
+        List<Friend> friendList = friendDao.getFriends();
+        assertTrue(friendList.contains(sonia));
     }
 
-    @Test
+   @Test
     void getFriends() {
         assertEquals(friendList, friendDao.getFriends());
         //System.out.println(friendDao.getFriends());
