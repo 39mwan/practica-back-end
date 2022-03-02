@@ -21,7 +21,8 @@ public class SQLFriendDao implements FriendDao {
 
     @Override
     public void insertFriend(Friend friend) {
-
+        final String sql = "INSERT INTO friends VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, friend.getId().toString(), friend.getName(), friend.getSurname());
     }
 
     @Override
@@ -33,6 +34,5 @@ public class SQLFriendDao implements FriendDao {
             friend.setSurname(resultSet.getString("surname"));
             return friend;
         });
-
     }
 }
