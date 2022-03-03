@@ -27,7 +27,7 @@ public class SQLFriendDao implements FriendDao {
 
     @Override
     public List<Friend> getFriends() {
-        final String sql = "SELECT * FROM friends";
+        final String sql = "SELECT * FROM friends ORDER BY name";
         return jdbcTemplate.query(sql, (resultSet, rowNumber) -> {
             Friend friend = new Friend();
             friend.setName(resultSet.getString("name"));
