@@ -34,8 +34,8 @@ class GetAllExpensesTest {
         luis = new Friend("luis", "merino");
         sonia = new Friend("sonia", "zhang");
         expenseList = new ArrayList<>();
-        expenseList.add(new Expense(luis, BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
-        expenseList.add(new Expense(sonia, BigDecimal.valueOf(10), "comida", LocalDateTime.now()));
+        expenseList.add(new Expense(luis.getId(), BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
+        expenseList.add(new Expense(sonia.getId(), BigDecimal.valueOf(10), "comida", LocalDateTime.now()));
         when(expenseDaoMock.getAllExpenses()).thenReturn(expenseList);
         assertEquals(expenseList, getAllExpensesUseCase.getAllExpensesUseCase());
 

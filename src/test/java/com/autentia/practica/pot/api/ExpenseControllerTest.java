@@ -53,7 +53,8 @@ class ExpenseControllerTest {
 
     @BeforeEach
     public void setUp(){
-        expense = new Expense(new Friend("Sonia", "Zhang"), BigDecimal.valueOf(20),"Taxi", LocalDateTime.now());
+        Friend sonia = new Friend("Sonia", "Zhang");
+        expense = new Expense(sonia.getId(), BigDecimal.valueOf(20),"Taxi", LocalDateTime.now());
         expenselist = new ArrayList<>();
         expenselist.add(expense);
     }

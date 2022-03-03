@@ -33,8 +33,8 @@ class ExpenseServiceTest {
 
     @Test
     public void shouldCalculateBalanceForTwo() {
-        expenseList.add(new Expense(luis, BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
-        expenseList.add(new Expense(sonia, BigDecimal.valueOf(10), "comida", LocalDateTime.now()));
+        expenseList.add(new Expense(luis.getId(), BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
+        expenseList.add(new Expense(sonia.getId(), BigDecimal.valueOf(10), "comida", LocalDateTime.now()));
 
         balance.put(luis, BigDecimal.valueOf(5)); // a luis le deben 5
         balance.put(sonia, BigDecimal.valueOf(-5)); // sonia debe 5
@@ -47,9 +47,9 @@ class ExpenseServiceTest {
     @Test
     public void shouldReturnBalanceForRepeatedFriends(){
 
-        expenseList.add(new Expense(luis, BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
-        expenseList.add(new Expense(sonia, BigDecimal.valueOf(10), "comida", LocalDateTime.now()));
-        expenseList.add(new Expense(sonia, BigDecimal.valueOf(20), "comida", LocalDateTime.now()));
+        expenseList.add(new Expense(luis.getId(), BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
+        expenseList.add(new Expense(sonia.getId(), BigDecimal.valueOf(10), "comida", LocalDateTime.now()));
+        expenseList.add(new Expense(sonia.getId(), BigDecimal.valueOf(20), "comida", LocalDateTime.now()));
 
         HashMap<Friend, BigDecimal> calculatedBalanceExpected = new HashMap<>();
         calculatedBalanceExpected.put(luis, BigDecimal.valueOf(-5));
