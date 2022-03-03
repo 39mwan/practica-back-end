@@ -19,13 +19,14 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest   //Inicia el contexto para inyectar las dependencias
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class SQLExpenseDaoIT {
 
     @Autowired
+    @Qualifier("SQLExpenseDao")
     ExpenseDao expenseDao;
 
     @Autowired
+    @Qualifier("SQLFriendDao")
     FriendDao friendDao;
 
     @Autowired
@@ -35,7 +36,7 @@ class SQLExpenseDaoIT {
     //Friend friend = friendDao.getFriends().indexOf(luis);
 
 
-    Expense taxiExpense = new Expense(friend.getId(), BigDecimal.valueOf(32.1), "Mi taxi", LocalDateTime.now());
+    Expense taxiExpense = new Expense(luis.getId(), BigDecimal.valueOf(32.1), "Mi taxi", LocalDateTime.now());
     List<Expense> expenseList = List.of(taxiExpense);
 
     @BeforeEach
