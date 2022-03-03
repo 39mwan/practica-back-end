@@ -6,4 +6,4 @@ CREATE TABLE friends(
 );
 
 INSERT INTO friends VALUES ("34234", "Luis", "Merino");
-INSERT INTO friends VALUES ("34254", "Luis", "Merino");
+INSERT INTO friends VALUES ("12345", "Sonia", "Zhang");
