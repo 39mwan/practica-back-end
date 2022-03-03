@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Repository
+@Repository("SQLExpenseDao")
 public class SQLExpenseDao implements ExpenseDao{
 
     @Autowired
@@ -27,7 +27,7 @@ public class SQLExpenseDao implements ExpenseDao{
 
     @Override
     public void addExpense(Expense expense) {
-        final String sql = "INSERT INTO expenses VALUES (?, ?, ?)";
+        final String sql = "INSERT INTO expenses VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, expense.getIdFriend(), expense.getAmount(), expense.getDescription(), expense.getDate());
     }
 }
