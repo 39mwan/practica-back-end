@@ -7,6 +7,7 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -35,6 +36,7 @@ class SQLExpenseDaoIT {
     Friend luis = new Friend("Luis", "Merino");
     //Friend friend = friendDao.getFriends().indexOf(luis);
 
+    // friendDao.getFriends().stream;
 
     Expense taxiExpense = new Expense(luis.getId(), BigDecimal.valueOf(32.1), "Mi taxi", LocalDateTime.now());
     List<Expense> expenseList = List.of(taxiExpense);
