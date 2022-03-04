@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.UUID;
 
 @Repository("SQLFriendDao")
 public class SQLFriendDao implements FriendDao {
@@ -30,6 +31,7 @@ public class SQLFriendDao implements FriendDao {
         final String sql = "SELECT * FROM friends ORDER BY name";
         return jdbcTemplate.query(sql, (resultSet, rowNumber) -> {
             Friend friend = new Friend();
+            friend.setId(UUID.fromString(resultSet.getString("id")));
             friend.setName(resultSet.getString("name"));
             friend.setSurname(resultSet.getString("surname"));
             return friend;
