@@ -12,6 +12,6 @@ CREATE TABLE expenses(
     date DATETIME NOT NULL,
     FOREIGN KEY (idFriend) REFERENCES friends(id)
 );
-
+/*
 INSERT INTO friends VALUES ("123e4567-e89b-12d3-a456-426614174000","Luis", "Merino");
-INSERT INTO friends VALUES ("12345", "Sonia", "Zhang");
+INSERT INTO friends VALUES ("123e4567-e89b-12d3-a456-426614174001", "Sonia", "Zhang");*/
