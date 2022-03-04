@@ -27,29 +27,28 @@ class SQLFriendDaoIT {   //Nomenclatura -IT para tests de integracion
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-
-    Friend expectedFriend = new Friend("Luis", "Merino");
     Friend sonia = new Friend("Sonia", "Zhang");
-    List<Friend> friendList = List.of(expectedFriend, sonia);
+    List<Friend> friendList = List.of(sonia);
 
     @Test
     @Order(1)
-    void getFriends() {
-        assertEquals(friendList, friendDao.getFriends());
-
-    }
-
-   @Test
-   @Order(2)
     void insertFriend() {
-       friendDao.insertFriend(sonia);
-       List<Friend> expectedList =  jdbcTemplate.query("SELECT * from friends WHERE name ='Sonia' AND surname='Zhang'", (resultSet, rowNumber) -> {
+        friendDao.insertFriend(sonia);
+        List<Friend> expectedList = jdbcTemplate.query("SELECT * from friends WHERE name ='Sonia' AND surname='Zhang'", (resultSet, rowNumber) -> {
             Friend friend = new Friend();
+            friend.setId(UUID.fromString(resultSet.getString("id")));
             friend.setName(resultSet.getString("name"));
             friend.setSurname(resultSet.getString("surname"));
             return friend;
         });
         assertTrue(expectedList.contains(sonia));
+    }
+
+    @Test
+    @Order(2)
+    void getFriends() {
+        assertEquals(friendList, friendDao.getFriends());
+
     }
 
 }
