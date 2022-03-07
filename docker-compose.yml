@@ -1,24 +1,24 @@
-version: '2.0'
-services:
-  potdb:
-    image: mysql:8
-    restart: always
-    environment:
-      MYSQL_DATABASE: 'potdb'
-      MYSQL_USER: 'potuser'
-      MYSQL_PASSWORD: 'potpsw'
-      MYSQL_ROOT_PASSWORD: 'abc123'
-    ports:
-      - '3306:3306'
-    expose:
-      # Opens port 3306 on the container
-      - '3306'
-      # Where our data will be persisted
-    volumes:
-      - potdb:/var/lib/mysql
-      - docker:/docker-entrypoint-initdb.d
-
-# Names our volume
-volumes:
-  potdb:
-  docker:
+#version: '2.0'
+#services:
+#  potdb:
+#    image: mysql:8
+#    restart: always
+#    environment:
+#      MYSQL_DATABASE: 'potdb'
+#      MYSQL_USER: 'potuser'
+#      MYSQL_PASSWORD: 'potpsw'
+#      MYSQL_ROOT_PASSWORD: 'abc123'
+#    ports:
+#      - '3306:3306'
+#    expose:
+#      # Opens port 3306 on the container
+#      - '3306'
+#      # Where our data will be persisted
+#    volumes:
+#      - potdb:/var/lib/mysql
+#      - docker:/docker-entrypoint-initdb.d
+#
+## Names our volume
+#volumes:
+#  potdb:
+#  docker:
