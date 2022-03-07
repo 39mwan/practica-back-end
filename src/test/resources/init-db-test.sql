@@ -7,7 +7,7 @@ CREATE TABLE friends(
 
 CREATE TABLE expenses(
     idFriend VARCHAR(36) NOT NULL,
-    amount DECIMAL NOT NULL,
+    amount DECIMAL(5,2) NOT NULL,
     description VARCHAR(120) NOT NULL,
     date DATETIME NOT NULL,
     FOREIGN KEY (idFriend) REFERENCES friends(id)
