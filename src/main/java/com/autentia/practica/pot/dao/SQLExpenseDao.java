@@ -25,11 +25,11 @@ public class SQLExpenseDao implements ExpenseDao{
 
     @Override
     public List<Expense> getAllExpenses() {
-        final String sql = "SELECT * FROM expenses ORDER BY idFriend";
+        final String sql = "SELECT * FROM expenses ORDER BY friend_id";
 
         return jdbcTemplate.query(sql, (resultSet, rowNumber) -> {
             Expense expense = new Expense();
-            expense.setIdFriend(UUID.fromString(resultSet.getString("idFriend")));
+            expense.setIdFriend(UUID.fromString(resultSet.getString("friend_id")));
             expense.setAmount(resultSet.getBigDecimal("amount"));
             expense.setDescription(resultSet.getString("description"));
             expense.setDate(resultSet.getTimestamp("date").toLocalDateTime());
