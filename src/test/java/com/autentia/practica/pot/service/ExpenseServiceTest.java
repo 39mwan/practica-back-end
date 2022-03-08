@@ -71,19 +71,4 @@ class ExpenseServiceTest {
         assertEquals(calculatedBalanceExpected, calculatedBalance);
     }
 
- /*   @Test
-    public void shouldNotAddDuplicatedFriends(){
-
-        expenseList.add(new Expense(luis, BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
-        expenseList.add(new Expense(sonia, BigDecimal.valueOf(10), "comida", LocalDateTime.now()));
-
-        HashMap<Friend, BigDecimal> calculatedBalanceExpected = new HashMap<>();
-        calculatedBalanceExpected.put(luis, BigDecimal.valueOf(0));
-        calculatedBalanceExpected.put(sonia, BigDecimal.valueOf(0));
-        HashMap<Friend, BigDecimal> calculatedBalance = new ExpenseService().calculate(expenseList, friendsList);
-
-        assertEquals(calculatedBalanceExpected, calculatedBalance);
-
-    }*/
-
 }
