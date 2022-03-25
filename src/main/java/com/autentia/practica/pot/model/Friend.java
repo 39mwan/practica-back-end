@@ -3,10 +3,10 @@ package com.autentia.practica.pot.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
-import java.util.UUID;
+import java.util.Random;
 
 public class Friend {
-    private UUID id;
+    private int id;
     private String name;
     private String surname;
 
@@ -15,7 +15,8 @@ public class Friend {
     }
 
     public Friend(@JsonProperty("name") String name, @JsonProperty("surname") String surname) {
-        this.id = UUID.randomUUID();
+        Random randomId = new Random();
+        this.id = randomId.nextInt();
         this.name = name;
         this.surname = surname;
     }
@@ -36,11 +37,11 @@ public class Friend {
         this.surname = surname;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 

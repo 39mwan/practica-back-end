@@ -6,12 +6,11 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.UUID;
 
 
 public class Expense {
 
-    private UUID idFriend;
+    private int idFriend;
     private BigDecimal amount; //bigDecimal
     private String description;
     private LocalDateTime date; //localDateTime
@@ -19,7 +18,7 @@ public class Expense {
     public Expense() {
     }
 
-    public Expense(@JsonProperty("friend") UUID idFriend, @JsonProperty("amount") BigDecimal amount,
+    public Expense(@JsonProperty("friend") int idFriend, @JsonProperty("amount") BigDecimal amount,
                    @JsonProperty("description") String description, @JsonProperty("date") LocalDateTime date) {
         this.idFriend = idFriend;
         this.amount = amount;
@@ -27,11 +26,11 @@ public class Expense {
         this.date = date;
     }
 
-    public UUID getIdFriend() {
+    public int getIdFriend() {
         return idFriend;
     }
 
-    public void setIdFriend(UUID idFriend) {
+    public void setIdFriend(int idFriend) {
         this.idFriend = idFriend;
     }
 
@@ -64,7 +63,7 @@ public class Expense {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Expense expense = (Expense) o;
-        return idFriend.equals(expense.idFriend) && amount.equals(expense.amount) && description.equals(expense.description) && date.equals(expense.date);
+        return (idFriend == expense.idFriend) && amount.equals(expense.amount) && description.equals(expense.description) && date.equals(expense.date);
     }
 
     @Override

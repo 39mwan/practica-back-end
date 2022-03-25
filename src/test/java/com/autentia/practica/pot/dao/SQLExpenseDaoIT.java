@@ -16,7 +16,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -50,7 +49,7 @@ class SQLExpenseDaoIT {
         BigDecimal amount = new BigDecimal("32.10");
         String descripcion = "Mi taxi";
         LocalDateTime fecha = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
-        UUID idLuis = getFriendUUID(luis);
+        int idLuis = getFriendId(luis);
 
         taxiExpense = createExpense(idLuis, amount, descripcion, fecha);
 
@@ -59,12 +58,12 @@ class SQLExpenseDaoIT {
         String sql = "SELECT * FROM expenses WHERE friend_id = ? AND amount=? AND description = ? AND date = ?";
         Expense receivedExpense = jdbcTemplate.queryForObject(sql, (resultSet, rowNumber) -> {
             Expense expense = new Expense();
-            expense.setIdFriend(UUID.fromString(resultSet.getString("friend_id")));
+            expense.setIdFriend(resultSet.getInt("friend_id"));
             expense.setAmount(resultSet.getBigDecimal("amount"));
             expense.setDescription(resultSet.getString("description"));
             expense.setDate(resultSet.getTimestamp("date").toLocalDateTime());
             return expense;
-        }, idLuis.toString(), amount, descripcion, fecha);
+        }, idLuis, amount, descripcion, fecha);
 
         assertEquals(taxiExpense, receivedExpense);
     }
@@ -73,7 +72,7 @@ class SQLExpenseDaoIT {
     @Order(2)
     void getAllExpenses() {
         //Creacion de resultado esperado : expectedList
-        UUID luisID =  getFriendUUID(luis);
+        int luisID =  getFriendId(luis);
 
         taxiExpense = createExpense(luisID, new BigDecimal("32.10"), "Mi taxi", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
         expectedList = List.of(taxiExpense);
@@ -81,17 +80,17 @@ class SQLExpenseDaoIT {
         assertEquals(expectedList, expenseDao.getAllExpenses());
     }
 
-    private Expense createExpense(UUID friendID, BigDecimal amount, String description, LocalDateTime date){
+    private Expense createExpense(int friendID, BigDecimal amount, String description, LocalDateTime date){
         return new Expense(friendID, amount, description, date);
     }
 
 
-    private UUID getFriendUUID(Friend friend) {
-        List<Friend> friendUUID = friendDao.getFriends().stream()
+    private int getFriendId(Friend friend) {
+        List<Friend> friendId = friendDao.getFriends().stream()
                 .filter(eachFriend -> eachFriend.equals(friend))
                 .collect(Collectors.toList());
 
-       return friendUUID.get(0).getId();
+       return friendId.get(0).getId();
     }
 
 

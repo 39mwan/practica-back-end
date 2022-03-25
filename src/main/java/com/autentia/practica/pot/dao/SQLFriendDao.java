@@ -23,7 +23,7 @@ public class SQLFriendDao implements FriendDao {
     @Override
     public void insertFriend(Friend friend) {
         final String sql = "INSERT INTO friends VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, friend.getId().toString(), friend.getName(), friend.getSurname());
+        jdbcTemplate.update(sql, friend.getId(), friend.getName(), friend.getSurname());
     }
 
     @Override
@@ -31,7 +31,7 @@ public class SQLFriendDao implements FriendDao {
         final String sql = "SELECT * FROM friends ORDER BY name";
         return jdbcTemplate.query(sql, (resultSet, rowNumber) -> {
             Friend friend = new Friend();
-            friend.setId(UUID.fromString(resultSet.getString("id")));
+            friend.setId(resultSet.getInt("id"));
             friend.setName(resultSet.getString("name"));
             friend.setSurname(resultSet.getString("surname"));
             return friend;

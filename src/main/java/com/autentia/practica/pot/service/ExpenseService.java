@@ -25,7 +25,7 @@ public class ExpenseService {
         if (!expenses.isEmpty()) {
             for (Expense expense : expenses) {
                 for (Friend friend : friendList) {
-                    if (expense.getIdFriend().equals(friend.getId())) { // no reconoce los dos amigos como iguales, se crean amigos con id distintos
+                    if (expense.getIdFriend() == friend.getId()) { // no reconoce los dos amigos como iguales, se crean amigos con id distintos
                         // referenciar al segundo POST el amigo que se ha creado en el primer POST
                         // prinmero POST de creacion de amigo localhost:8080/api/v1/friend
                         // segundo POST de creacion de gasto con el amigo creado en el primer POST

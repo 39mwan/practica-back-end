@@ -38,7 +38,7 @@ class SQLFriendDaoIT {   //Nomenclatura -IT para tests de integracion
         String sql = "SELECT * from friends WHERE name ='Sonia' AND surname='Zhang'";
         Friend actualFriend = jdbcTemplate.queryForObject(sql,(resultSet, rowNumber) -> {
             Friend friend = new Friend();
-            friend.setId(UUID.fromString(resultSet.getString("id")));
+            friend.setId(resultSet.getInt("id"));
             friend.setName(resultSet.getString("name"));
             friend.setSurname(resultSet.getString("surname"));
             return friend;});
