@@ -3,8 +3,9 @@ package com.autentia.practica.pot.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 
@@ -13,13 +14,13 @@ public class Expense {
     private int idFriend;
     private BigDecimal amount; //bigDecimal
     private String description;
-    private LocalDateTime date; //localDateTime
+    private LocalDate date; //localDateTime
 
     public Expense() {
     }
 
     public Expense(@JsonProperty("friend") int idFriend, @JsonProperty("amount") BigDecimal amount,
-                   @JsonProperty("description") String description, @JsonProperty("date") LocalDateTime date) {
+                   @JsonProperty("description") String description, @JsonProperty("date") LocalDate date) {
         this.idFriend = idFriend;
         this.amount = amount;
         this.description = description;
@@ -50,11 +51,11 @@ public class Expense {
         this.amount = amount;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
