@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
-
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("api/v1/expenses")
 @RestController
 public class ExpenseController {
