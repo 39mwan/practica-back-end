@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,8 +35,8 @@ class GetAllExpensesTest {
         luis = new Friend("luis", "merino");
         sonia = new Friend("sonia", "zhang");
         expenseList = new ArrayList<>();
-        expenseList.add(new Expense(luis.getId(), BigDecimal.valueOf(20), "taxi", LocalDateTime.now()));
-        expenseList.add(new Expense(sonia.getId(), BigDecimal.valueOf(10), "comida", LocalDateTime.now()));
+        expenseList.add(new Expense(luis.getId(), BigDecimal.valueOf(20), "taxi", LocalDate.now()));
+        expenseList.add(new Expense(sonia.getId(), BigDecimal.valueOf(10), "comida", LocalDate.now()));
         when(expenseDaoMock.getAllExpenses()).thenReturn(expenseList);
         assertEquals(expenseList, getAllExpensesUseCase.getAllExpensesUseCase());
 

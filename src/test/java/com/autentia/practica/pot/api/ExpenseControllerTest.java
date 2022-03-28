@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,7 +55,7 @@ class ExpenseControllerTest {
     @BeforeEach
     public void setUp(){
         Friend sonia = new Friend("Sonia", "Zhang");
-        expense = new Expense(sonia.getId(), BigDecimal.valueOf(20),"Taxi", LocalDateTime.now());
+        expense = new Expense(sonia.getId(), BigDecimal.valueOf(20),"Taxi", LocalDate.now());
         expenselist = new ArrayList<>();
         expenselist.add(expense);
     }

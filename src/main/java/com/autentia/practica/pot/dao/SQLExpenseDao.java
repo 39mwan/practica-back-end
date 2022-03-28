@@ -22,14 +22,14 @@ public class SQLExpenseDao implements ExpenseDao{
 
     @Override
     public List<Expense> getAllExpenses() {
-        final String sql = "SELECT * FROM expenses ORDER BY friend_id";
+        final String sql = "SELECT * FROM expenses ";
 
         return jdbcTemplate.query(sql, (resultSet, rowNumber) -> {
             Expense expense = new Expense();
-            expense.setIdFriend(resultSet.getInt("friend_id"));
+            expense.setIdFriend(resultSet.getInt("id"));
             expense.setAmount(resultSet.getBigDecimal("amount"));
             expense.setDescription(resultSet.getString("description"));
-            expense.setDate(resultSet.getTimestamp("date").toLocalDateTime());
+            expense.setDate(resultSet.getDate("date").toLocalDate());
             return expense;
         });
     }

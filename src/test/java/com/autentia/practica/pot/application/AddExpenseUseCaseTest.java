@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static org.mockito.Mockito.*;
@@ -22,7 +23,7 @@ class AddExpenseUseCaseTest {
         expenseDaoMock = mock(ExpenseDao.class);
         addExpenseUseCase = new AddExpenseUseCase(expenseDaoMock);
         sonia = new Friend("Sonia", "Zhang");
-        expense = new Expense(sonia.getId(), BigDecimal.valueOf(20),"taxi", LocalDateTime.now());
+        expense = new Expense(sonia.getId(), BigDecimal.valueOf(20),"taxi", LocalDate.now());
     }
 
     @Test
